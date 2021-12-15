@@ -1,0 +1,11 @@
+.menuname{
+    display: flex;
+  justify-content: space-between;
+}
+.lii li{
+    display: inline-block;
+    
+}
+#userpanel:click{
+    
+}
