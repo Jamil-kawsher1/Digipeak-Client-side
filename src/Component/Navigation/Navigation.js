@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Dropdown, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-
+import digi from "../../img/digip.png";
+import logo from "../../img/digipekf.png"
 const Navigation = () => {
     return (
         <>
@@ -9,7 +10,7 @@ const Navigation = () => {
                 <Container className=''>
 
 
-                    <Navbar.Brand href="#home"><img src="https://i.ibb.co/PWjKcZk/logo.png" alt="" /></Navbar.Brand>
+                    <Navbar.Brand href="#home"><img src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
 
@@ -37,7 +38,7 @@ const Navigation = () => {
 
 
                             <Dropdown>
-                                <Dropdown.Toggle variant="" id="dropdown-basic">
+                                <Dropdown.Toggle variant="" style={{ backgroundColor: 'transparent' }} id="dropdown-basic">
                                     <i class="far fa-user"></i>
                                 </Dropdown.Toggle>
 

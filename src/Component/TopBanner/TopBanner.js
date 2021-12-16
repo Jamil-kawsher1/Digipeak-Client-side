@@ -27,14 +27,14 @@ const TopBanner = () => {
             }} pagination={{
                 "clickable": true
             }} navigation={true} className="mySwiper">
-                <SwiperSlide style={{ backgroundColor: 'aqua' }}>
+                <SwiperSlide style={{ backgroundColor: '#f0e0ff' }}>
 
 
 
                     <Container className='my-3'>
 
                         <Row >
-                            <Col className='my-auto'>
+                            <Col xs={12} lg={6} className='my-auto'>
                                 <h4 className=''>Hot Product</h4>
 
                                 <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '60px' }}>Year end offer</h3>
@@ -44,7 +44,7 @@ const TopBanner = () => {
                                 <button class="btn btn-background-slide">Shop Now</button>
                             </Col>
 
-                            <Col>
+                            <Col xs={12} lg={6}>
                                 <img className='img-fluid' style={{ maxHeight: '350px' }} src={win10} alt="" />
                             </Col>
                         </Row>
