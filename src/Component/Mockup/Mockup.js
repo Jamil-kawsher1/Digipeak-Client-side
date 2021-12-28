@@ -6,7 +6,7 @@ const Mockup = () => {
     return (
         <div>
 
-            <div className='container '>
+            <div className='container my-5'>
                 <div>
 
                     <Row >

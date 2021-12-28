@@ -41,11 +41,65 @@ const TopBanner = () => {
                                 <h3>2021 Collection</h3>
 
                                 {/* <Button>Shop Now</Button> */}
-                                <button class="btn btn-background-slide">Shop Now</button>
+                                <button className="btn btn-background-slide mb-3 mb-md-0 mb-lg-0 mb-sm-0">Shop Now</button>
                             </Col>
 
                             <Col xs={12} lg={6}>
-                                <img className='img-fluid' style={{ maxHeight: '350px' }} src={win10} alt="" />
+                                <img className='img-fluid' style={{ maxHeight: '350px' }} src='https://i.imgur.com/iJ610ZD.png' alt="" />
+                            </Col>
+                        </Row>
+                    </Container>
+
+
+
+
+                </SwiperSlide>
+                <SwiperSlide style={{ backgroundColor: '#f0e0ff' }}>
+
+
+
+                    <Container className='my-3'>
+
+                        <Row >
+                            <Col xs={12} lg={6} className='my-auto'>
+                                <h4 className=''>Hot Product</h4>
+
+                                <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '60px' }}>Year end offer</h3>
+                                <h3>2021 Collection</h3>
+
+                                {/* <Button>Shop Now</Button> */}
+                                <button className="btn btn-background-slide mb-3 mb-md-0 mb-lg-0 mb-sm-0">Shop Now</button>
+                            </Col>
+
+                            <Col xs={12} lg={6}>
+                                <img className='img-fluid' style={{ maxHeight: '350px' }} src='https://i.imgur.com/Bzt1SDO.png' alt="" />
+                            </Col>
+                        </Row>
+                    </Container>
+
+
+
+
+                </SwiperSlide>
+                <SwiperSlide style={{ backgroundColor: '#f0e0ff' }}>
+
+
+
+                    <Container className='my-3'>
+
+                        <Row >
+                            <Col xs={12} lg={6} className='my-auto'>
+                                <h4 className=''>Hot Product</h4>
+
+                                <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '60px' }}>Year end offer</h3>
+                                <h3>2021 Collection</h3>
+
+                                {/* <Button>Shop Now</Button> */}
+                                <button className="btn btn-background-slide mb-3 mb-md-0 mb-lg-0 mb-sm-0">Shop Now</button>
+                            </Col>
+
+                            <Col xs={12} lg={6}>
+                                <img className='img-fluid' style={{ maxHeight: '350px' }} src='https://i.imgur.com/hub4XNb.png' alt="" />
                             </Col>
                         </Row>
                     </Container>

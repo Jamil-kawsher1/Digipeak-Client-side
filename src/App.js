@@ -7,15 +7,17 @@ import TopBanner from './Component/TopBanner/TopBanner';
 import Mockup from './Component/Mockup/Mockup';
 import Card from './Component/Card/Card';
 import Footer from './Component/Footer/Footer';
-import Sidebar from './Component/Dashboard/Sidebar/Sidebar';
+
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { Route, Switch } from 'react-router-dom';
-import DasboardM from './Component/Dashboard/DasboardM';
-import DashboardHome from './Component/Dashboard/DashboardHome/DashboardHome';
+
 import Myorders from './Component/Myorders/Myorders';
 import ManageAllOrder from './Component/ManageAllOrder/ManageAllOrder';
 import AddProduct from './Component/AddProuduct/AddProduct';
 import LoginSingup from './Component/Login/LoginSingup';
+import OrderReview from './Component/OrderReview/OrderReview';
+import AuthProvider from './Context/AuthProvider/AuthProvider';
+import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 
 
 
@@ -31,62 +33,64 @@ function App() {
 
       <Footer></Footer> */}
 
-
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/'>
-            <Navigation></Navigation>
-            <TopBanner>
-
-            </TopBanner>
-            <Mockup></Mockup>
-            <Card></Card>
-            <Footer></Footer>
-          </Route>
-          <Route path='/login'>
+      <AuthProvider>
 
 
 
-            <Footer></Footer>
-          </Route>
-          <Route path='/myorders'>
-            <Navigation></Navigation>
-            <Myorders></Myorders>
-            <Footer></Footer>
-          </Route>
-          <Route path='/manageorders'>
-            <Navigation></Navigation>
-            <ManageAllOrder></ManageAllOrder>
-            <Footer></Footer>
-          </Route>
-          <Route path='/addproduct'>
-            <Navigation ></Navigation>
-            <AddProduct></AddProduct>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/'>
+              <Navigation></Navigation>
+              <TopBanner>
 
-          </Route>
-          <Route path='/register'>
-            <Navigation></Navigation>
-            <LoginSingup></LoginSingup>
-            <Footer></Footer>
-          </Route>
+              </TopBanner>
+              <Mockup></Mockup>
+              <Card></Card>
+              <Footer></Footer>
+            </Route>
 
+            <PrivateRoute path='/myorders'>
+              <Navigation></Navigation>
+              <Myorders></Myorders>
+              <Footer></Footer>
+            </PrivateRoute>
+            <PrivateRoute path='/manageorders'>
+              <Navigation></Navigation>
+              <ManageAllOrder></ManageAllOrder>
+              <Footer></Footer>
+            </PrivateRoute>
+            <PrivateRoute path='/addproduct'>
+              <Navigation ></Navigation>
+              <AddProduct></AddProduct>
 
-          <Route path='/allproduts'>
-
-          </Route>
-
-          <Route path='*'>
-
-          </Route>
-
-
-
+            </PrivateRoute>
+            <Route path='/login'>
+              <Navigation></Navigation>
+              <LoginSingup></LoginSingup>
+              <Footer></Footer>
+            </Route>
 
 
-        </Switch>
+            <PrivateRoute path='/order/:id'>
+              <Navigation></Navigation>
+              <OrderReview></OrderReview>
+              <Footer></Footer>
+            </PrivateRoute>
+
+            <Route path='*'>
+
+            </Route>
 
 
-      </BrowserRouter>
+
+
+
+          </Switch>
+
+
+        </BrowserRouter>
+      </AuthProvider>
+
     </div>
   );
 }

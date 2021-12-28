@@ -1,28 +1,69 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 const ManageAllOrder = () => {
+    const [allorder, setAllorder] = useState([]);
+
+    useEffect(() => {
+        fetch('https://digipeak.herokuapp.com/allorders')
+            .then(res => res.json())
+            .then(data => setAllorder(data))
+    }, [allorder])
+
+
+    const handleCancel = id => {
+        const del = window.confirm("Are You Sure you Want to Delete?");
+        if (del) {
+            const url = `https://digipeak.herokuapp.com/deleteorder/${id}`;
+            console.log(url);
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(async res => {
+                    // if (res.status == 200) {
+                    //     alert("Cancelled  Successfully");
+
+                    // }
+                });
+        }
+    }
+    const handleconfirm = id => {
+        const url = `https://digipeak.herokuapp.com/orderstatus/${id}`
+        axios.put(url,)
+            .then(response => console.log(response));
+    }
+    const handledelevred = id => {
+        const url = `https://digipeak.herokuapp.com/orderstatusdelevred/${id}`
+        axios.put(url,)
+            .then(response => console.log(response));
+    }
+
+
     return (
-        <div style={{ paddingBottom: '100px', marginTop: '20px' }}>
+        <div style={{ paddingBottom: '100px', marginTop: '20px', marginBottom: '100px' }}>
             <h3 className='text-center'>All orders</h3>
 
-            <div class="table-responsive table-responsive-sm text-center">
-                <table class="table ">
+            <div className=" table-responsive-sm text-center">
+                <table className="table ">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+
                             <th scope="col">Product Name</th>
                             <th scope="col">Customer Name</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td><Button> <i class="fas fa-trash"></i> Delete</Button> <Button> <i class="far fa-check-circle"></i> Confirm</Button> <Button><i class="fas fa-clipboard-check"></i> Delivered</Button> </td>
-                        </tr>
+                        {allorder.map(row => <tr key={row._id}>
+                            <th scope="row">{row.productname}</th>
+                            <td>{row.name}</td>
+                            <td>{row.price}</td>
+                            <td>{row.orderstatus}</td>
+                            <td><Button onClick={() => handleCancel(row._id)}> <i className="fas fa-trash"></i> Delete</Button> <Button onClick={() => handleconfirm(row._id)}>  <i className="far fa-check-circle"></i> Confirm</Button> <Button onClick={() => handledelevred(row._id)}><i className="fas fa-clipboard-check"></i> Delivered</Button> </td>
+                        </tr>)}
+
 
                     </tbody>
                 </table>
