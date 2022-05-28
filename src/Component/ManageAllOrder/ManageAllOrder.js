@@ -43,31 +43,32 @@ const ManageAllOrder = () => {
     return (
         <div style={{ paddingBottom: '100px', marginTop: '20px', marginBottom: '100px' }}>
             <h3 className='text-center'>All orders</h3>
+            {allorder.length < 1 ? <h3 style={{ marginTop: '20px', textAlign: 'center', paddingBottom: '30vh' }}>We have O order To Manage</h3>
+                : <div className=" table-responsive-sm text-center">
+                    <table className="table ">
+                        <thead>
+                            <tr>
 
-            <div className=" table-responsive-sm text-center">
-                <table className="table ">
-                    <thead>
-                        <tr>
-
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {allorder.map(row => <tr key={row._id}>
-                            <th scope="row">{row.productname}</th>
-                            <td>{row.name}</td>
-                            <td>{row.price}</td>
-                            <td>{row.orderstatus}</td>
-                            <td><Button onClick={() => handleCancel(row._id)}> <i className="fas fa-trash"></i> Delete</Button> <Button onClick={() => handleconfirm(row._id)}>  <i className="far fa-check-circle"></i> Confirm</Button> <Button onClick={() => handledelevred(row._id)}><i className="fas fa-clipboard-check"></i> Delivered</Button> </td>
-                        </tr>)}
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allorder.map(row => <tr key={row._id}>
+                                <th scope="row">{row.productname}</th>
+                                <td>{row.name}</td>
+                                <td>{row.price}</td>
+                                <td>{row.orderstatus}</td>
+                                <td><Button style={{ marginBottom: "10px", width: '115px' }} onClick={() => handleCancel(row._id)}> <i className="fas fa-trash"></i> Delete</Button> <Button style={{ marginBottom: "10px", width: '115px' }} onClick={() => handleconfirm(row._id)}>  <i className="far fa-check-circle"></i> Confirm</Button> <Button style={{ marginBottom: "10px", width: '115px' }} onClick={() => handledelevred(row._id)}><i className="fas fa-clipboard-check"></i> Delivered</Button> </td>
+                            </tr>)}
 
 
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>}
+
         </div >
     );
 };

@@ -1,0 +1,17 @@
+.notf {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9FAFC;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.notf img {
+    width: auto;
+    height: auto;
+}

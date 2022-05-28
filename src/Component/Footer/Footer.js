@@ -10,7 +10,7 @@ const Footer = () => {
                 <Container style={{ padding: '120px' }}>
                     <Row>
                         <Col lg={2} sm={12} xs={12}>
-                            <div className='' style={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
+                            <div className='' style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: 'center' }}>
                                 <img src={digi} alt="" />
                                 <span className='text-start' style={{ display: "inline-block", marginLeft: '10px' }}>&copy; Jamil Kawsher</span>
                             </div>
@@ -54,12 +54,12 @@ const Footer = () => {
 
 
                         </Col>
-                        <Col lg={2} sm={12} xs={12}>
-                            <div style={{ display: 'grid', placeContent: 'center' }}>
+                        <Col className='follow' lg={2} sm={12} xs={12}>
+                            <div style={{ display: 'grid', placeContent: 'center', }}>
 
 
 
-                                <div className='mx-auto'><h5>Follow Us</h5></div>
+                                <div className='mx-auto follow'><h5>Follow Us</h5></div>
                                 <div>
                                     <li className='text-start'>
                                         <ul>Facebook</ul>

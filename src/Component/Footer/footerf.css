@@ -1,0 +1,31 @@
+.foot {
+
+
+
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    padding: 80px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .foot {
+        flex-direction: column;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .about-small {
+
+        text-align: justify;
+        flex-grow: 1;
+    }
+
+    .important-small {
+
+        flex-grow: 1;
+    }
+
+}

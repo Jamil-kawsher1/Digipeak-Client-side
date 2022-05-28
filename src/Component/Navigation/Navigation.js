@@ -1,9 +1,11 @@
 import React from 'react';
 import { Container, Dropdown, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import useAuth from '../../Hooks/useAuth';
 import digi from "../../img/digip.png";
 import logo from "../../img/digipekf.png"
+import './navigation.css';
 const Navigation = () => {
 
     const { user, logOut } = useAuth({});
@@ -20,9 +22,10 @@ const Navigation = () => {
 
 
                         <Nav className='m-auto'>
-                            <Nav.Link className='active' ><Link style={{ color: 'black', textDecoration: 'none' }} to='/'>Home</Link></Nav.Link>
-                            <Nav.Link className='active' ><Link style={{ color: 'black', textDecoration: 'none' }} to='/myorders'>My orders</Link></Nav.Link>
-                            <Nav.Link className='active' ><Link style={{ color: 'black', textDecoration: 'none' }} to='/manageorders'>Manage Orders</Link></Nav.Link>
+                            <NavLink style={{ color: 'black' }} className="nv-link" to="/">Home</NavLink>
+                            <NavLink className="nv-link" to='/myorders'>MY Orders</NavLink>
+                            <NavLink className="nv-link" to='/manageorders' >Manage orders</NavLink>
+                            <NavLink className="nv-link" to='/addproduct' >Add Product</NavLink>
 
 
 
@@ -42,7 +45,7 @@ const Navigation = () => {
 
 
                             <Dropdown>
-                                <Dropdown.Toggle className='' variant="" style={{ backgroundColor: 'transparent' }} id="">
+                                <Dropdown.Toggle className='' variant="" style={{ backgroundColor: 'white', outline: 'none' }} id="">
                                     <i className=" far fa-user"></i>
                                 </Dropdown.Toggle>
 
@@ -69,7 +72,7 @@ const Navigation = () => {
 
 
 
-            </Navbar>
+            </Navbar >
 
 
 

@@ -33,31 +33,32 @@ const Myorders = () => {
         <div style={{}}>
             <h3 className='text-center'>All orders</h3>
 
-            <div className="table-responsive-sm text-center">
-                <table className="table">
-                    <thead>
-                        <tr>
+            {myorders.length < 1 ? <div style={{ marginTop: '20px', textAlign: 'center', paddingBottom: '30vh' }}><h3>You Have No Orders</h3></div>
+                : <div className="table-responsive-sm text-center">
+                    <table className="table">
+                        <thead>
+                            <tr>
 
-                            <th scope="col">Product Name</th>
+                                <th scope="col">Product Name</th>
 
-                            <th scope="col">Price</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {myorders.map(row => <tr key={row._id}>
-                            <th scope="row">{row.productname}</th>
-                            <td>{row.price}</td>
-                            <td>{row.orderstatus}</td>
-                            <td><Button onClick={() => handleCancel(row._id)} variant='outlined'> <i className="fas fa-trash"></i> Cancel</Button></td>
-                        </tr>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {myorders.map(row => <tr key={row._id}>
+                                <th scope="row">{row.productname}</th>
+                                <td>{row.price}</td>
+                                <td>{row.orderstatus}</td>
+                                <td><Button onClick={() => handleCancel(row._id)} variant='outlined'> <i className="fas fa-trash"></i> Cancel</Button></td>
+                            </tr>
 
-                        )}
+                            )}
 
 
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>}
         </div >
     );
 };

@@ -18,20 +18,15 @@ import LoginSingup from './Component/Login/LoginSingup';
 import OrderReview from './Component/OrderReview/OrderReview';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
+import Foooterf from './Component/Footer/Foooterf';
+import NotFound from './Component/NotFoundPage/NotFound';
 
 
 
 function App() {
   return (
     <div className="App">
-      {/* <Navigation></Navigation>
-      <Sidebar></Sidebar>
-      <TopBanner></TopBanner>
-      <Mockup></Mockup>
 
-      <Card></Card>
-
-      <Footer></Footer> */}
 
       <AuthProvider>
 
@@ -46,28 +41,28 @@ function App() {
               </TopBanner>
               <Mockup></Mockup>
               <Card></Card>
-              <Footer></Footer>
+              <Foooterf></Foooterf>
             </Route>
 
             <PrivateRoute path='/myorders'>
               <Navigation></Navigation>
               <Myorders></Myorders>
-              <Footer></Footer>
+              <Foooterf></Foooterf>
             </PrivateRoute>
             <PrivateRoute path='/manageorders'>
               <Navigation></Navigation>
               <ManageAllOrder></ManageAllOrder>
-              <Footer></Footer>
+              <Foooterf></Foooterf>
             </PrivateRoute>
             <PrivateRoute path='/addproduct'>
               <Navigation ></Navigation>
               <AddProduct></AddProduct>
-
+              <Foooterf></Foooterf>
             </PrivateRoute>
             <Route path='/login'>
               <Navigation></Navigation>
               <LoginSingup></LoginSingup>
-              <Footer></Footer>
+              <Foooterf></Foooterf>
             </Route>
 
 
@@ -78,7 +73,7 @@ function App() {
             </PrivateRoute>
 
             <Route path='*'>
-
+              <NotFound></NotFound>
             </Route>
 
 

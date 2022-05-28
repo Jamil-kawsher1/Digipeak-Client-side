@@ -43,24 +43,41 @@ const Card = () => {
         },
     ]
 
-    const [cproducts, setCproducts] = useState([])
+    const [cproducts, setCproducts] = useState([]);
+    const [displayProduct, setDisplayProduct] = useState([]);
 
     useEffect(() => {
         fetch('https://digipeak.herokuapp.com/products')
             .then(res => res.json())
-            .then(data => setCproducts(data));
+            .then(data => {
+                setCproducts(data);
+                setDisplayProduct(data)
+            });
 
-    }, [cproducts])
+    }, [])
 
+    // console.log(displayProduct.filter(pp => pp.productname = 'ttttt'))
+    const handleSearch = (event) => {
+        const seerchTerm = event.target.value;
+        const matchedItem = cproducts.filter(pro => pro.productname.toLowerCase().includes(seerchTerm.toLowerCase()));
+        // console.log(matchedItem.productname);
+        if (matchedItem.length < 1) {
+            displayProduct.flag = -1;
+        }
+        setDisplayProduct(matchedItem);
+
+        // const matchedProduct=cproducts.filter(product=>product.productname.include)
+
+    }
     return (
         <div className='container'>
-            {cproducts.length < 1 && <div className='d-flex justify-content-center my-5'><Spinner animation="grow" /></div>}
+            {displayProduct.length < 1 && displayProduct.flag !== -1 && <div className='d-flex justify-content-center my-5'><Spinner animation="grow" /></div>}
 
             <Row className=''>
-
+                <div style={{ display: 'flex', justifyContent: "flex-end", }}><input className='search-btn fa-solid fa-magnifying-glass' style={{ margin: '10 80px', outlineColor: 'gray', padding: '5px' }} type="text" onChange={handleSearch} placeholder='&#xf002;' /></div>
 
                 {
-                    cproducts.map(p =>
+                    displayProduct.map(p =>
 
                         <Col key={p._id} className='my-3 d-flex justify-content-center mx-auto mx-md-0 mx-lg-0 mx-sm-0' xs={12} sm={6} lg={4} >
                             <div className="cardp">
