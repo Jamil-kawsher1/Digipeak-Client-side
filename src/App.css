@@ -36,10 +36,15 @@
     transform: rotate(360deg);
   }
 } */
-*body{
+*body {
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 
   background-color: none;
 }
-*btn{
+
+*btn {
   background-color: none;
 }

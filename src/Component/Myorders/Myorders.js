@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
-
+import './MyOrder.css';
 const Myorders = () => {
     const [myorders, setMyorders] = useState([]);
     const { user } = useAuth();
@@ -30,11 +30,11 @@ const Myorders = () => {
 
     }
     return (
-        <div style={{}}>
+        <div className='main-box' style={{}}>
             <h3 className='text-center'>All orders</h3>
 
             {myorders.length < 1 ? <div style={{ marginTop: '20px', textAlign: 'center', paddingBottom: '30vh' }}><h3>You Have No Orders</h3></div>
-                : <div className="table-responsive-sm text-center">
+                : <div style={{ paddingBottom: '20px' }} className="table-responsive-sm text-center">
                     <table className="table">
                         <thead>
                             <tr>

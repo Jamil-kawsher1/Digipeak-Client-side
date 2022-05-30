@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-
+import './manageorder.css';
 const ManageAllOrder = () => {
     const [allorder, setAllorder] = useState([]);
 
@@ -41,7 +41,7 @@ const ManageAllOrder = () => {
 
 
     return (
-        <div style={{ paddingBottom: '100px', marginTop: '20px', marginBottom: '100px' }}>
+        <div className='main-box' style={{ paddingBottom: '100px', marginTop: '20px', marginBottom: '100px' }}>
             <h3 className='text-center'>All orders</h3>
             {allorder.length < 1 ? <h3 style={{ marginTop: '20px', textAlign: 'center', paddingBottom: '30vh' }}>We have O order To Manage</h3>
                 : <div className=" table-responsive-sm text-center">
