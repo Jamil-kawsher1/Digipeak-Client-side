@@ -20,6 +20,7 @@ import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 import Foooterf from './Component/Footer/Foooterf';
 import NotFound from './Component/NotFoundPage/NotFound';
+import Testcard from './Component/TestCard/Testcard';
 
 
 
@@ -65,7 +66,11 @@ function App() {
               <Foooterf></Foooterf>
             </Route>
 
+            <Route path='/card'>
 
+
+              <Testcard></Testcard>
+            </Route>
             <PrivateRoute path='/order/:id'>
               <Navigation></Navigation>
               <OrderReview></OrderReview>

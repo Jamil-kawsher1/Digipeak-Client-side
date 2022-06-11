@@ -9,7 +9,7 @@ const Foooterf = () => {
 
 
             <div className='foot'>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}><img src={logo} alt="" srcset="" />
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}><img src={logo} alt="" />
                     <span style={{ display: 'block' }}>&copy; Jamil Kawsher</span>
 
                 </div>

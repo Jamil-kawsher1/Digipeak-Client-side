@@ -3,6 +3,7 @@ import { Col, Row, Spinner } from 'react-bootstrap';
 import './Card.css'
 import win10 from '../../img/win10.png'
 import { Link } from 'react-router-dom';
+import Testcard from '../TestCard/Testcard';
 const Card = () => {
     const product = [
         {
@@ -70,12 +71,13 @@ const Card = () => {
 
     }
     return (
-        <div className='container'>
-            {displayProduct.length < 1 && displayProduct.flag !== -1 && <div className='d-flex justify-content-center my-5'><Spinner animation="grow" /></div>}
+        <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: "column" }}><div style={{ display: 'flex', justifyContent: "flex-end", marginRight: '20%' }}><input className='search-btn fa-solid fa-magnifying-glass' style={{ margin: '10 80px', outlineColor: 'gray', padding: '5px' }} type="text" onChange={handleSearch} placeholder='&#xf002;' /></div>
 
-            <Row className=''>
-                <div style={{ display: 'flex', justifyContent: "flex-end", }}><input className='search-btn fa-solid fa-magnifying-glass' style={{ margin: '10 80px', outlineColor: 'gray', padding: '5px' }} type="text" onChange={handleSearch} placeholder='&#xf002;' /></div>
+            <div className='container'>
+                {displayProduct.length < 1 && displayProduct.flag !== -1 && <div className='d-flex justify-content-center my-5'><Spinner animation="grow" /></div>}
 
+                {/* <Row className=''>
+              
                 {
                     displayProduct.map(p =>
 
@@ -97,75 +99,17 @@ const Card = () => {
                     )
                 }
 
-                {/* <div className="cardp">
+                
+            </Row> */}
 
-                        <div className="imgBox">
-                            <img src={win10} alt="mouse corsair" className="mouse" />
-                        </div>
-
-                        <div className="contentBox">
-                            <h3>Mouse Corsair M65</h3>
-                            <h2 className="price">61.<small>98</small> €</h2>
-                            <a href="#" className="buy">Buy Now</a>
-                        </div>
-
-                    </div> */}
+                {displayProduct.map(p => <Testcard data={p} key={p._id}></Testcard>)}
 
 
 
-
-
-                {/* <Col className='mx-lg-5 mx-xs-auto my-5' xs={12} sm={4} lg={3} >
-
-                    <div className="cardp ">
-
-                        <div className="imgBox">
-                            <img src="https://www.pngitem.com/pimgs/b/50-503228_happy-girl-png.png" alt="mouse corsair" className="mouse" />
-                        </div>
-
-                        <div className="contentBox">
-                            <h3>Mouse Corsair M65</h3>
-                            <h2 className="price">61.<small>98</small> €</h2>
-                            <a href="#" className="buy">Buy Now</a>
-                        </div>
-
-                    </div>
-
-                </Col>
-                <Col className='mx-lg-5 mx-xs-auto my-5' xs={12} sm={4} lg={3}>
-
-                    <div className="cardp ">
-
-                        <div className="imgBox">
-                            <img src="https://www.corsair.com/corsairmedia/sys_master/productcontent/CH-9300011-NA-M65_PRO_RGB_BLK_04.png" alt="mouse corsair" className="mouse" />
-                        </div>
-
-                        <div className="contentBox">
-                            <h3>Mouse Corsair M65</h3>
-                            <h2 className="price">61.<small>98</small> €</h2>
-                            <a href="#" className="buy">Buy Now</a>
-                        </div>
-
-                    </div>
-                </Col>
-                <Col className='mx-lg-5 mx-xs-auto my-5' xs={12} sm={4} lg={3} >
-                    <div className="cardp ">
-
-                        <div className="imgBox">
-                            <img src="https://www.corsair.com/corsairmedia/sys_master/productcontent/CH-9300011-NA-M65_PRO_RGB_BLK_04.png" alt="mouse corsair" className="mouse" />
-                        </div>
-
-                        <div className="contentBox">
-                            <h3>Mouse Corsair M65</h3>
-                            <h2 className="price">61.<small>98</small> €</h2>
-                            <a href="#" className="buy">Buy Now</a>
-                        </div>
-
-                    </div>
-                </Col> */}
-            </Row>
+            </div>
 
         </div>
+
     );
 };
 

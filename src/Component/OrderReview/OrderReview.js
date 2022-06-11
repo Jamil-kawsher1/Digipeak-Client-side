@@ -68,7 +68,7 @@ const OrderReview = () => {
 
 
     return (
-        <div style={{ backgroundColor: '#fff3e0', paddingTop: '40px', paddingBottom: '40px' }}>
+        <div id='order' style={{ backgroundColor: '#fff3e0', paddingTop: '40px', paddingBottom: '40px' }}>
             <div className="d-flex flex-column justify-content-center align-items-center" id="order-heading">
                 <div className="text-uppercase">
                     <p style={{ fontSize: '24px' }}>Order details</p>
