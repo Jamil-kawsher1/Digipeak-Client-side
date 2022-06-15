@@ -9,22 +9,22 @@ const ManageAllOrder = () => {
         fetch('https://digipeak.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setAllorder(data))
-    }, [allorder])
+    }, [])
 
-
+    // console.log(allorder)
     const handleCancel = id => {
         const del = window.confirm("Are You Sure you Want to Delete?");
         if (del) {
             const url = `https://digipeak.herokuapp.com/deleteorder/${id}`;
-            console.log(url);
+            // console.log(url);
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(async res => {
-                    // if (res.status == 200) {
-                    //     alert("Cancelled  Successfully");
+                    if (res.status == 200) {
+                        alert("Cancelled  Successfully");
 
-                    // }
+                    }
                 });
         }
     }
@@ -38,8 +38,9 @@ const ManageAllOrder = () => {
         axios.put(url,)
             .then(response => console.log(response));
     }
-
-
+    // let productNameAfterSplice = allorder.OrderedProductName(d => d.OrderedProductName).toString().split(',')
+    // let orderedProductList = productNameAfterSplice.map(d => <p>{d}</p>)
+    // console.log(productNameAfterSplice);
     return (
         <div className='main-box' style={{ paddingBottom: '100px', marginTop: '20px', marginBottom: '100px' }}>
             <h3 className='text-center'>All orders</h3>
@@ -57,7 +58,7 @@ const ManageAllOrder = () => {
                         </thead>
                         <tbody>
                             {allorder.map(row => <tr key={row._id}>
-                                <th scope="row">{row.productname}</th>
+                                <th scope="row">{row.OrderedProductName}</th>
                                 <td>{row.name}</td>
                                 <td>{row.price}</td>
                                 <td>{row.orderstatus}</td>

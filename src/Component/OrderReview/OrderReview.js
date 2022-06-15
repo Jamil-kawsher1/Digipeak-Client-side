@@ -7,20 +7,22 @@ import useAuth from '../../Hooks/useAuth';
 
 
 import './OrderReview.css'
-const OrderReview = () => {
+const OrderReview = (props) => {
+    const { cart } = props;
     const [placeorderdata, setPlaceorderdata] = useState({});
     const { isLoading, user, error } = useAuth();
     const { id } = useParams();
     const [singleService, setSingleService] = useState([]);
-    const url = `https://digipeak.herokuapp.com/products/${id}`
-    console.log(id);
-    useEffect(() => {
+    // const url = `https://digipeak.herokuapp.com/products/${id}`
+    // console.log(id);
+    console.log(cart)
+    // useEffect(() => {
 
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setSingleService(data))
-    }, [])
-    console.log(singleService);
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => setSingleService(data))
+    // }, [])
+    // console.log(singleService);
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -33,7 +35,7 @@ const OrderReview = () => {
 
 
     const handleOrderSubmit = e => {
-        console.log(placeorderdata);
+        // console.log(placeorderdata);
         const userData = {
             name: user.displayName,
             email: user.email,
@@ -43,25 +45,38 @@ const OrderReview = () => {
             mobile: placeorderdata.mobile,
         };
 
+        let orderedPName = '';
+        let orderedQuanitity = '';
+        for (let element of cart) {
+            // console.log(element.productname + element.quantity);
+            orderedPName += element.productname + " " + `(${element.quantity}q),`;
+
+        }
+        console.log(orderedPName, orderedQuanitity);
         const productData = {
-            productname: singleService.productname,
-            price: singleService.price,
-            img: singleService.img,
+            OrderedProductName: orderedPName,
+
 
 
 
         }
         const userOrderData = { ...productData, ...userData };
         console.log(userOrderData);
+        if (Object.keys(userData).length < 6) {
+            alert("Please Fill up all the field");
+        } else if (Object.values(userData).includes('') || Object.values(userData).includes(undefined)) {
+            alert("Invalid Input Type please Check");
+        } else {
+            axios.post('https://digipeak.herokuapp.com/placeorder', userOrderData)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        alert("Order Placed SuccessFully");
 
-        axios.post('https://digipeak.herokuapp.com/placeorder', userOrderData)
-            .then(res => {
-                if (res.data.insertedId) {
-                    alert("Order Placed SuccessFully");
 
+                    }
+                })
+        }
 
-                }
-            })
         e.preventDefault();
     }
 
@@ -76,21 +91,17 @@ const OrderReview = () => {
 
             </div>
             <div className="wrapper bg-white">
-                <div className="table-responsive">
-                    <table className="table table-borderless">
-                        <thead>
-                            <tr className="text-uppercase text-muted">
-                                <th scope="col">product</th>
-                                <th scope="col" className="text-right">total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">{singleService.productname}</th>
-                                <td className="text-right"><b>{singleService.price} ৳</b></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="product-data">
+
+                    <div className="prouduct-details">
+                        <h6>Prouduct</h6>
+                        {cart.map(d => <p key={d._id}>{d.productname}</p>)}
+                    </div>
+
+                    <div className="proudct-quantity">
+                        <h6>Quantity</h6>
+                        {cart.map(d => <p key={d._id} style={{ display: 'flex', justifyContent: 'flex-end' }}>{d.quantity}</p>)}
+                    </div>
                 </div>
 
 

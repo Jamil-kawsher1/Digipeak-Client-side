@@ -33,3 +33,9 @@ nav .active {
   outline: none;
   box-shadow: none;
 }
+
+.product-cart {
+
+  text-decoration: none;
+  color: black;
+}

@@ -1,14 +1,31 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Container, Dropdown, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import { CartDContext } from '../../Context/CartProvider/CartProvider';
 import useAuth from '../../Hooks/useAuth';
 import digi from "../../img/digip.png";
 import logo from "../../img/digipekf.png"
+// import { cartContext } from '../Card/Card';
 import './navigation.css';
-const Navigation = () => {
+const Navigation = (props) => {
+    const { cart } = props;
+    console.log(cart);
 
     const { user, logOut } = useAuth({});
+    // const cart = useContext(cartContext);
+    // console.log(cart)
+    let totalQuantity = 0;
+    for (const product of cart) {
+        if (!product.quantity) {
+            product.quantity = 1;
+        }
+
+        totalQuantity = totalQuantity + product.quantity;
+    }
+    // console.log(totalQuantity);
+
     return (
         <>
 
@@ -17,7 +34,8 @@ const Navigation = () => {
 
 
                     <Navbar.Brand ><Link to="/"> <img src={logo} alt="" /></Link></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+
                     <Navbar.Collapse id="responsive-navbar-nav">
 
 
@@ -68,6 +86,10 @@ const Navigation = () => {
                             </div>
                         </Nav>
                     </Navbar.Collapse>
+                    <Nav>
+                        {(cart.length) ? <Link className='product-cart' to='order'> <i class="fa-solid fa-cart-shopping"></i>{totalQuantity === 0 ? "" : " " + totalQuantity}</Link> : <Link className='product-cart' to='#'> <i class="fa-solid fa-cart-shopping"></i></Link>}
+                    </Nav>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 </Container>
 
 

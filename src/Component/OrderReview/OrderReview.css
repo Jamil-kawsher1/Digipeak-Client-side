@@ -145,3 +145,8 @@ p.text-justify {
         font-size: 0.75rem
     }
 }
+
+.product-data {
+    display: flex;
+    justify-content: space-between;
+}
